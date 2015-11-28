@@ -1,0 +1,60 @@
+{% extends 'base.html'%}
+
+{% block nav_activo %}
+	<li class="active" > <a href=""> Gastos del mes </a></li>
+	<li> <a href=" ">Lista de Compras</a></li>
+	<li> <a href=""> Compras</a></li>
+	<li > <a href="">Productos</a></li>
+
+
+{% endblock%}
+
+{% block section%}
+{%if object_list %}
+	<div class="col-md-8">
+	<table class="table table-striped table-hover ">
+		<thead>
+		    <tr class="info">
+			
+				<th>Descripcion</td>
+				<th>Costo</td>
+				<th>Fecha</td>
+				<th>Editar</th>
+				<th>Eliminar</th>
+			
+		    </tr>
+		</thead>
+		<tbody>
+			{% for expense in object_list %}
+			    <tr>
+				<td>{{ expense.descripcion }} </td>
+				<td>${{ expense.precio }}</td>
+				<td>{{ expense.fecha|date }}</td>
+				<td><a href="{% url "expense-update" pk=expense.id %}" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></a></td>
+				<td><a href="{% url "expense-delete" pk=expense.id %}"class="btn btn-danger"><i class="glyphicon glyphicon-minus"></i></a></td>
+			    </tr>
+			{% endfor %}
+			<tr class="danger">
+				<td colspan="4"><strong>Total</strong></td>
+				<td><strong>$ {{total}}</strong></td>	
+			</tr>
+		</tbody>
+	</table>
+	</div>
+{% else %}
+No hay gastos
+{% endif %}
+{% endblock %}
+
+
+
+
+
+<p>
+    {% if previous_month %}
+        Previous Month: {{ previous_month|date:"F Y" }}
+    {% endif %}
+    {% if next_month %}
+        Next Month: {{ next_month|date:"F Y" }}
+    {% endif %}
+</p>
