@@ -27,7 +27,7 @@ class ExpenseMonthArchiveView(MonthArchiveView,TemplateMethod):
     queryset = Expense.objects.all()
     date_field = "fecha"
     allow_future = True
-    template_name = 'expense/expense_archive_month.html'
+    template_name = 'expense/expense_list.html'
     def get(self, request, *args, **kwargs):        
         return render(request,self.template_name,self.context(kwargs['year'],kwargs['month']))    
 

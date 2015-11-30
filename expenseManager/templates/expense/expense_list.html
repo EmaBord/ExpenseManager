@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 
 {% block nav_activo %}
-	<li class="active" > <a href=""> Gastos del mes </a></li>
+	<li class="active" > <a href="/"> Gastos del mes </a></li>
 	<li> <a href="/lista">Lista de Compras</a></li>
 	<li> <a href="/compras"> Compras</a></li>
 	<li > <a href="/productos">Productos</a></li>
@@ -10,14 +10,15 @@
 {% endblock%}
 
 {% block section%}
-<div class="col-md-12">
+
+	<div class="col-md-12">
 		<a href="{% url "expense-add" %}" class="btn btn-success">Agregar Gasto</a>
 	</div>
-{%if object_list %}
+	<br><br><br>
 	
-	<div class="col-md-5">
 		
-	
+{%if object_list %}	
+  <div class="col-md-5">
 	<table class="table table-striped table-hover ">
 		<thead>
 		    <tr class="info">
@@ -50,15 +51,22 @@
 			</tr>
 		</tbody>
 	</table>
+  </div>
+  {% else %}
+	<div class = "col-lg-6">
+		<div class="well">
+ 			Sin datos para el mes.
+		</div>
 	</div>
+  {% endif %}
+	
 	<div class="col-md-7">
 
-		<form class="form-horizontal" role="form" >
-
+		<form class="form-inline" role="form" >
 			<div class="form-group">
 		      <label for="select" class="col-lg-1 control-label">Mes</label>
 		      <div class="col-lg-3">
-		        <select class="form-control" id="month">
+		        <select class="form-control input-small" id="month">
 		          <option value='1'>Enero</option>
 		          <option value='2'>Febrero</option>
 		          <option value='3'>Marzo</option>
@@ -73,6 +81,7 @@
 		          <option value='12'>Diciembre</option>
 		        </select>
 		    </div>
+		</div>
 		    <div class="form-group">
 		      <label for="select" class="col-lg-1 control-label">Año</label>
 		      <div class="col-lg-2">
@@ -82,6 +91,7 @@
 		          
 		        </select>
 		    </div>
+		</div>
 		<div class="form-group">
         	<div class="col-sm-4">
             	<input type="button" class="btn btn-primary" onclick="enviar()" value="Filtrar">
@@ -99,7 +109,5 @@
 		}
 	</script>
 
-{% else %}
-No hay datos
-{% endif %}
+
 {% endblock %}
