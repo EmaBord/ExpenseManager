@@ -56,7 +56,7 @@ PROYECT_URL = os.path.realpath(os.path.dirname(__file__))
 
 ROOT_URLCONF = 'expenseManager.urls'
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
-print SETTINGS_PATH
+
 
 TEMPLATES = [
     {
@@ -86,8 +86,12 @@ WSGI_APPLICATION = 'expenseManager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'expenseManager',
+        'USER': 'emanager',
+        'PASSWORD': '4d4f78a0296fdd8_',
+        'HOST': '',
+        'PORT': '',
     }
 }
 

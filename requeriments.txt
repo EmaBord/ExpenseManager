@@ -1,0 +1,4 @@
+Django==1.8
+django-widget-tweaks==1.4.1
+MySQL-python==1.2.5
+wheel==0.26.0
