@@ -9,6 +9,6 @@ class Expense(models.Model):
 	precio			= models.FloatField() 
 	extraordinario	= models.IntegerField(choices = ((1, ("Si")),(0, ("No"))),default=0)
 	class Meta:
-		ordering = ['-fecha']
+		ordering = ['-id']
 	def get_absolute_url(self):
 		return reverse('expense-detail', kwargs={'pk': self.pk})	
