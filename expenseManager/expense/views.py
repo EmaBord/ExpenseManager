@@ -6,12 +6,12 @@ from expense.models import Expense
 
 from django.views.generic.dates import MonthArchiveView
 
-
+from django.shortcuts import render
 class ExpenseMonthArchiveView(MonthArchiveView):
     queryset = Expense.objects.all()
     date_field = "fecha"
     allow_future = True
-
+    template_name = 'expense/expense_archive_month.html'
     def get_context_data(self, **kwargs):
         context = super(ExpenseMonthArchiveView, self).get_context_data(**kwargs)
         total = 0
@@ -20,6 +20,14 @@ class ExpenseMonthArchiveView(MonthArchiveView):
             total = total + e.precio
         context['total'] = total    
         return context
+    def get(self, request, *args, **kwargs):
+        
+        expenses = Expense.objects.filter(fecha__year=kwargs['year'],fecha__month=kwargs['month'])
+        total = 0
+        for e in expenses:
+            total = total + e.precio
+        
+        return render(request,self.template_name,{'object_list':expenses,'total':total})    
 
 
 class ExpenseCreate(CreateView):
