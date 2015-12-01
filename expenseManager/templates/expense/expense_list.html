@@ -10,15 +10,20 @@
 {% endblock%}
 
 {% block section%}
+	<div class="row">
 
-	<div class="col-md-12">
-		<a href="{% url "expense-add" %}" class="btn btn-success">Agregar Gasto</a>
+	<div class="col-xs-12 col-md-5 col-sm-12">
+		<a href="{% url "expense-add" %}" class="btn btn-lg btn-block btn-success"><i class="glyphicon glyphicon-fire"></i> Agregar Gasto</a>
 	</div>
-	<br><br><br>
+	</div>
+	<br>
 	
-		
+	
+<div class="row">		
 {%if object_list %}	
+  
   <div class="col-md-5">
+
   	<div class="panel panel-primary">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">Gastos del mes</h3>
@@ -77,10 +82,10 @@
 	
 	<div class="col-md-7">
 
-		<form class="form-inline" role="form" >
+		<form class="form-horizontal" role="form" >
 			<div class="form-group">
-		      <label for="select" class="col-lg-1 control-label">Mes</label>
-		      <div class="col-lg-3">
+		      <label for="select" class="col-md-1 col-sm-1 control-label">Mes</label>
+		      <div class="col-md-4 col-sm-12">
 		        <select class="form-control input-small" id="month">
 		          <option value='1'>Enero</option>
 		          <option value='2'>Febrero</option>
@@ -98,8 +103,8 @@
 		    </div>
 		</div>
 		    <div class="form-group">
-		      <label for="select" class="col-lg-1 control-label">Año</label>
-		      <div class="col-lg-2">
+		      <label for="select" class="col-md-1 col-sm-1 control-label">Año</label>
+		      <div class="col-md-4 col-sm-12">
 		        <select class="form-control" id="year" >
 		          <option value='2015'>2015</option>
 		          <option value='2016'>2016</option>
@@ -107,9 +112,10 @@
 		        </select>
 		    </div>
 		</div>
+
 		<div class="form-group">
-        	<div class="col-sm-4">
-            	<input type="button" class="btn btn-primary" onclick="enviar()" value="Filtrar">
+        	<div class="col-md-5 col-sm-12">
+            	<input type="button" class="btn btn-primary btn-md btn-block" onclick="enviar()" value="Filtrar">
         	</div>
     	</div>
 
@@ -123,6 +129,6 @@
 		
 		}
 	</script>
-
+</div>
 
 {% endblock %}
