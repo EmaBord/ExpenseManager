@@ -1,4 +1,6 @@
 expenseManager/expenseManager/settings.py
+expenseManager/expense/migrations
+expenseManager/listProductToBuy/migrations
 *.pyc
 bin/*
 include/*
