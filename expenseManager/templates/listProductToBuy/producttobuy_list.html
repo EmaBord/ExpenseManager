@@ -1,0 +1,68 @@
+{% extends 'base.html'%}
+
+{% block lista_active %}class="active"{% endblock %}
+
+{% block section%}
+	<div class="row">
+
+		<div class="col-xs-12 col-md-5 col-sm-12">
+			<form method="post" action="{% url 'ProductToBuy-add' %}" class="form-inline" role="form">
+				    {% csrf_token %}
+				    <div class="form-group">
+				    	<input type="text" class="form-control" name="nombre">
+				    </div>
+				    <div class="form-group">
+						<button class="btn btn-success btn-block"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+					</div>
+			</form>
+		</div>
+	</div>
+	<br>
+	
+	
+<div class="row">		
+{%if object_list %}	
+  
+ 	<div class="col-md-6">
+	<table class="table table-striped table-hover ">
+		<thead>
+			
+		    <tr class="info">			
+				<th>Producto</td>				
+				<th>Comprado</th>			
+		    </tr>
+		</thead>
+		<tbody>
+				
+		
+			{% for object in object_list %}
+			    <tr class="success">
+				<td><a href="{% url "ProductToBuy-update" pk=object.id %}">{{ object.nombre }}</a> </td>
+				
+				
+				<td>
+					<form action="{% url "ProductToBuy-delete" pk=object.id %}" method="post">
+						{% csrf_token %}
+						<button class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i></button>
+					</form>
+				</td>
+
+			    </tr>
+			{% endfor %}
+			
+		</tbody>
+	</table>
+	</div>
+  </div>
+  {% else %}
+	<div class = "col-lg-6">
+		<div class="well">
+ 			Sin productos.
+		</div>
+	</div>
+  {% endif %}
+	
+
+</div>
+
+{% endblock %}

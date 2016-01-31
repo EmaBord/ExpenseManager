@@ -8,4 +8,5 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('expense.urls')),	
+    url(r'^', include('listProductToBuy.urls')),	
 ]

@@ -27,7 +27,12 @@
 
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      <ul class="nav navbar-nav">
-				      	 {% block nav_activo %}{%endblock%}
+				      	 {% block nav %}
+							<li {% block gastos_active %}{% endblock %}> <a href="/"> Gastos del mes </a></li>
+							<li {% block lista_active %}{% endblock %}> <a href="{% url 'ProductToBuy-list' %}">Lista de Compras</a></li>
+							<li {% block compras_active %}{% endblock %}> <a href="/compras"> Compras</a></li>
+							<li {% block productos_active %}{% endblock %}> <a href="/productos">Productos</a></li>
+						{% endblock%}
 				      </ul>
 				        
 				    </div>

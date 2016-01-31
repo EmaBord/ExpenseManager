@@ -1,9 +1,9 @@
 {% extends 'base.html'%}
 {% block title%}
-Agregar gasto
+Producto
 {% endblock%}
 
-{% block gastos_active %}class="active"{% endblock %}
+{% block lista_active %}class="active"{% endblock %}
 
 {% block section%}
 
@@ -38,12 +38,10 @@ Agregar gasto
     {% endfor %}
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">{% trans "Agregar" %}</button>
-            <a href="{% url "expense-list"%}" class="btn btn-success">Cancelar</a>
+            <button type="submit" class="btn btn-primary">{% trans "Modificar" %}</button>
+            <a href="{% url "ProductToBuy-list"%}" class="btn btn-success">Cancelar</a>
         </div>
     </div>
 </form>
 </div>
-
-
 {% endblock %}
