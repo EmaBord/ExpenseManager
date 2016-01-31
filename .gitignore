@@ -1,3 +1,4 @@
+expenseManager/expenseManager/settings.py
 *.pyc
 bin/*
 include/*
