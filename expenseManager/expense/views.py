@@ -5,8 +5,8 @@ from django.core.urlresolvers import reverse_lazy
 from expense.models import Expense
 from django.views.generic.dates import MonthArchiveView
 from django.shortcuts import render
-
-
+from pytz import timezone 
+buenos_aires = timezone('America/Argentina/Buenos_Aires')
 class TemplateMethod():
     def context(self,year,month):
         context = {}
@@ -52,7 +52,7 @@ class ExpenseListView(ListView,TemplateMethod):
     model = Expense
     def get_context_data(self, **kwargs):
         import datetime
-        ahora = datetime.datetime.now()
+        ahora = datetime.now(buenos_aires).replace(tzinfo=None)
         context = super(ExpenseListView, self).get_context_data(**kwargs)
         context.update(self.context(ahora.year,ahora.month))  
         return context
