@@ -52,7 +52,7 @@ class ExpenseListView(ListView,TemplateMethod):
     model = Expense
     def get_context_data(self, **kwargs):
         import datetime
-        ahora = datetime.now(buenos_aires).replace(tzinfo=None)
+        ahora = datetime.datetime.now(buenos_aires).replace(tzinfo=None)
         context = super(ExpenseListView, self).get_context_data(**kwargs)
         context.update(self.context(ahora.year,ahora.month))  
         return context
