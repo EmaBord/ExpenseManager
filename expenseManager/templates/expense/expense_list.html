@@ -82,7 +82,7 @@
   $('#gastos').dataTable({
       "paging": true,
       "iDisplayLength": 4,
-      "lengthChange": false,
+      "lengthChange": true,
       "searching": true,
       "ordering": true,
       "info": true,
@@ -96,10 +96,10 @@
           "infoFiltered":   "(filtrado desde _MAX_ filas)",
           "infoPostFix":    "",
           "thousands":      ",",
-          "lengthMenu":     "Mostrar _MENU_ filas",
+          "lengthMenu":     "_MENU_",
           "faceoadingRecords": "Cargando...",
           "processing":     "Procesando...",
-          "search":         "Buscar: ",
+          "search":         "",
           "zeroRecords":    "0 resultados",
           "paginate": {
               "first":      "Primero",
@@ -120,8 +120,12 @@
                   { "bSortable": false },
                   { "bSortable": false }
                 ],
-      "order": [[2, "desc"]],          
+      "order": [[2, "desc"]],   
+  
   });
+  $('#gastos_filter input').addClass('form-control');
+  $('.dataTables_length select').addClass('form-control');
+  $('#gastos_filter input').attr("placeholder", "Buscar");
 </script>
   {% else %}
 	<div class = "col-lg-6">
