@@ -67,7 +67,7 @@
 			    <tr>
 				<td>{{ expense.descripcion }} </td>
 				<td>${{ expense.precio }}</td>
-				<td>{{ expense.fecha|date }}</td>
+				<td>{{ expense.fecha|date:"d-m-y" }}</td>
 				<td>{% if expense.extraordinario%}Si{% else %}No{% endif%}</td>
 				<td><a href="{% url "expense-update" pk=expense.id %}" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></a></td>
 				<td><a href="{% url "expense-delete" pk=expense.id %}"class="btn btn-danger"><i class="glyphicon glyphicon-minus"></i></a></td>
